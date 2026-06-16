@@ -101,13 +101,13 @@ const CONFIG = {
     },
     {
       institution: 'Peoples Higher Secondary School',
-      degree: 'Science',
+      degree: 'HSSC - Science',
       from: '2006',
       to: '2008',
     },
     {
       institution: 'Peoples High School',
-      degree: 'General',
+      degree: 'SSC',
       from: '2000',
       to: '2006',
     }
