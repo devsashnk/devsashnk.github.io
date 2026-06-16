@@ -109,32 +109,31 @@ const CONFIG = {
   ],
   certifications: [
     {
-      name: 'Lorem ipsum',
-      body: 'Lorem ipsum dolor sit amet',
-      year: 'March 2022'
+      name: 'Advanced ASP.NET',
+      body: 'System Domain, Bangalore',
+      year: '2016'
     },
   ],
   educations: [
     {
-      institution: 'Institution Name',
-      degree: 'Degree',
-      from: '2015',
-      to: '2019',
+      institution: 'Shree Rayeshwar Institute of Engineering & Information Technology',
+      degree: 'BE Computer',
+      from: '2009',
+      to: '2013',
     },
     {
-      institution: 'Institution Name',
-      degree: 'Degree',
-      from: '2012',
-      to: '2014',
+      institution: 'Peoples Higher Secondary School',
+      degree: 'Science',
+      from: '2006',
+      to: '2008',
     },
+    {
+      institution: 'Peoples High School',
+      degree: 'General',
+      from: '2000',
+      to: '2006',
+    }
   ],
-  
-  // Display articles from your medium or dev account. (Optional)
-  blog: {
-    source: 'dev', // medium | dev
-    username: 'arifszn', // to hide blog section, keep it empty
-    limit: 2, // How many articles to display. Max is 10.
-  },
   googleAnalytics: {
     id: '', // GA3 tracking id/GA4 tag id UA-XXXXXXXXX-X | G-XXXXXXXXXX
   },
