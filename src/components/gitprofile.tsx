@@ -14,7 +14,6 @@ import { SanitizedConfig } from '../interfaces/sanitized-config';
 import ErrorPage from './error-page';
 import { DEFAULT_THEMES } from '../constants/default-themes';
 import ThemeChanger from './theme-changer';
-import { BG_COLOR } from '../constants';
 import AvatarCard from './avatar-card';
 import { Profile } from '../interfaces/profile';
 import DetailsCard from './details-card';
@@ -190,7 +189,7 @@ const GitProfile = ({ config }: { config: Config }) => {
         <>
           <div className="p-4 lg:p-10 min-h-full relative z-10 max-w-7xl mx-auto">
             {/* HERO SECTION */}
-            <div className="flex flex-col items-center justify-center text-center mb-16 pt-8 lg:pt-16">
+            <div className="flex flex-col items-center justify-center text-center mb-8 pt-4 lg:pt-8">
               {!sanitizedConfig.themeConfig.disableSwitch && (
                 <div className="absolute top-4 right-4 lg:top-10 lg:right-10">
                   <ThemeChanger
@@ -201,14 +200,14 @@ const GitProfile = ({ config }: { config: Config }) => {
                   />
                 </div>
               )}
-              <div className="w-full max-w-3xl flex flex-col items-center glass-card p-8 rounded-3xl z-hover">
+              <div className="w-full max-w-lg flex flex-col items-center glass-card p-4 rounded-3xl z-hover">
                 <AvatarCard
                   profile={profile}
                   loading={loading}
                   avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
                   resumeFileUrl={sanitizedConfig.resume.fileUrl}
                 />
-                <div className="mt-6 w-full">
+                <div className="mt-4 w-full">
                   <DetailsCard
                     profile={profile}
                     loading={loading}
@@ -220,38 +219,41 @@ const GitProfile = ({ config }: { config: Config }) => {
             </div>
 
             {/* CONTENT SECTION */}
-            <div className="flex flex-col lg:flex-row gap-8">
-              {/* Left Column */}
-              <div className="w-full lg:w-1/3 flex flex-col gap-8">
-                {sanitizedConfig.skills.length !== 0 && (
+            <div className="columns-1 md:columns-2 gap-8 w-full [&>div]:break-inside-avoid [&>div]:mb-8">
+              {sanitizedConfig.skills.length !== 0 && (
+                <div>
                   <SkillCard
                     loading={loading}
                     skills={sanitizedConfig.skills}
                   />
-                )}
-                {sanitizedConfig.experiences.length !== 0 && (
+                </div>
+              )}
+              {sanitizedConfig.experiences.length !== 0 && (
+                <div>
                   <ExperienceCard
                     loading={loading}
                     experiences={sanitizedConfig.experiences}
                   />
-                )}
-                {sanitizedConfig.certifications.length !== 0 && (
-                  <CertificationCard
-                    loading={loading}
-                    certifications={sanitizedConfig.certifications}
-                  />
-                )}
-                {sanitizedConfig.educations.length !== 0 && (
+                </div>
+              )}
+              {sanitizedConfig.educations.length !== 0 && (
+                <div>
                   <EducationCard
                     loading={loading}
                     educations={sanitizedConfig.educations}
                   />
-                )}
-              </div>
-
-              {/* Right Column */}
-              <div className="w-full lg:w-2/3 flex flex-col gap-8">
-                {sanitizedConfig.projects.github.display && (
+                </div>
+              )}
+              {sanitizedConfig.certifications.length !== 0 && (
+                <div>
+                  <CertificationCard
+                    loading={loading}
+                    certifications={sanitizedConfig.certifications}
+                  />
+                </div>
+              )}
+              {sanitizedConfig.projects.github.display && (
+                <div>
                   <GithubProjectCard
                     header={sanitizedConfig.projects.github.header}
                     limit={sanitizedConfig.projects.github.automatic.limit}
@@ -259,29 +261,35 @@ const GitProfile = ({ config }: { config: Config }) => {
                     loading={loading}
                     googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
                   />
-                )}
-                {sanitizedConfig.publications.length !== 0 && (
+                </div>
+              )}
+              {sanitizedConfig.publications.length !== 0 && (
+                <div>
                   <PublicationCard
                     loading={loading}
                     publications={sanitizedConfig.publications}
                   />
-                )}
-                {sanitizedConfig.projects.external.projects.length !== 0 && (
+                </div>
+              )}
+              {sanitizedConfig.projects.external.projects.length !== 0 && (
+                <div>
                   <ExternalProjectCard
                     loading={loading}
                     header={sanitizedConfig.projects.external.header}
                     externalProjects={sanitizedConfig.projects.external.projects}
                     googleAnalyticId={sanitizedConfig.googleAnalytics.id}
                   />
-                )}
-                {sanitizedConfig.blog.display && (
+                </div>
+              )}
+              {sanitizedConfig.blog.display && (
+                <div>
                   <BlogCard
                     loading={loading}
                     googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
                     blog={sanitizedConfig.blog}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
           {sanitizedConfig.footer && (

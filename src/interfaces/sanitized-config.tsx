@@ -57,6 +57,7 @@ export interface SanitizedSocial {
   behance?: string;
   medium?: string;
   dev?: string;
+  codepen?: string;
   stackoverflow?: string;
   website?: string;
   telegram?: string;

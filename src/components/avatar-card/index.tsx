@@ -26,7 +26,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
 }): React.JSX.Element => {
   return (
     <div className="w-full">
-      <div className="grid place-items-center py-8">
+      <div className="grid place-items-center pt-0 pb-2">
         {loading || !profile ? (
           <div className="avatar opacity-90">
             <div className="mb-8 rounded-full w-32 h-32">
@@ -40,7 +40,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
         ) : (
           <div className="avatar opacity-90">
             <div
-              className={`mb-8 rounded-full w-32 h-32 ${
+              className={`mb-4 rounded-full w-24 h-24 ${
                 avatarRing
                   ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2'
                   : ''
@@ -65,12 +65,12 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             {loading || !profile ? (
               skeleton({ widthCls: 'w-48', heightCls: 'h-8' })
             ) : (
-              <span className="text-base-content opacity-70">
+              <span className="text-gradient-animate text-3xl">
                 {profile.name}
               </span>
             )}
           </h5>
-          <div className="mt-3 text-base-content font-mono">
+          <div className="mt-1 text-base-content font-mono">
             {loading || !profile
               ? skeleton({ widthCls: 'w-48', heightCls: 'h-5' })
               : profile.bio}
@@ -78,14 +78,14 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
         </div>
         {resumeFileUrl &&
           (loading ? (
-            <div className="mt-6">
+            <div className="mt-2">
               {skeleton({ widthCls: 'w-40', heightCls: 'h-8' })}
             </div>
           ) : (
             <a
               href={resumeFileUrl}
               target="_blank"
-              className="btn btn-outline btn-sm text-xs mt-6 opacity-50"
+              className="btn btn-outline btn-sm text-xs mt-2 opacity-50"
               download
               rel="noreferrer"
             >

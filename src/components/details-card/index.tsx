@@ -8,6 +8,7 @@ import { CgDribbble } from 'react-icons/cg';
 import {
   FaBehanceSquare,
   FaBuilding,
+  FaCodepen,
   FaDev,
   FaFacebook,
   FaGlobe,
@@ -65,7 +66,7 @@ const ListItem: React.FC<{
   skeleton?: boolean;
 }> = ({ icon, title, value, link, skeleton = false }) => {
   return (
-    <div className="flex justify-start py-2 px-1 items-center">
+    <div className="flex justify-start py-0.5 px-1 items-center">
       <div className="grow font-medium gap-2 flex items-center my-1">
         {icon} {title}
       </div>
@@ -123,7 +124,7 @@ const OrganizationItem: React.FC<{
   };
 
   return (
-    <div className="flex justify-start py-2 px-1 items-center">
+    <div className="flex justify-start py-0.5 px-1 items-center">
       <div className="grow font-medium gap-2 flex items-center my-1">
         {icon} {title}
       </div>
@@ -170,12 +171,12 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
 
   return (
     <div className="w-full">
-      <div className="card-body">
+      <div className="card-body p-2 sm:p-4">
         <div className="text-base-content">
           {loading || !profile ? (
             renderSkeleton()
           ) : (
-            <Fragment>
+            <div className="flex flex-col gap-0 w-full text-left">
               {profile.location && (
                 <ListItem
                   icon={<MdLocationOn />}
@@ -313,6 +314,14 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   link={`https://dev.to/${social.dev}`}
                 />
               )}
+              {social?.codepen && (
+                <ListItem
+                  icon={<FaCodepen />}
+                  title="CodePen:"
+                  value={social.codepen}
+                  link={`https://codepen.io/${social.codepen}`}
+                />
+              )}
               {social?.stackoverflow && (
                 <ListItem
                   icon={<FaStackOverflow />}
@@ -367,7 +376,7 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   link={`https://discord.com/app`}
                 />
               )}
-            </Fragment>
+            </div>
           )}
         </div>
       </div>

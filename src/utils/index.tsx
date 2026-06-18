@@ -75,6 +75,7 @@ export const getSanitizedConfig = (
         behance: config?.social?.behance,
         medium: config?.social?.medium,
         dev: config?.social?.dev,
+        codepen: config?.social?.codepen,
         stackoverflow: config?.social?.stackoverflow,
         website: config?.social?.website,
         phone: config?.social?.phone,

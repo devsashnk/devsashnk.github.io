@@ -48,7 +48,68 @@
 
   /* effects */
   --depth: 1;
+  /* noise */
   --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: 'nord';
+  color-scheme: dark;
+  --color-base-100: #0f172a;
+  --color-base-200: #1e293b;
+  --color-base-300: #334155;
+  --color-base-content: #f8fafc;
+  --color-primary: #0ea5e9;
+  --color-secondary: #ec4899;
+  --color-accent: #8b5cf6;
+}
+
+@plugin "daisyui/theme" {
+  name: 'business';
+  color-scheme: dark;
+  --color-base-100: #18181b;
+  --color-base-200: #27272a;
+  --color-base-300: #3f3f46;
+  --color-base-content: #fafafa;
+  --color-primary: #eab308;
+  --color-secondary: #ef4444;
+  --color-accent: #d946ef;
+}
+
+@plugin "daisyui/theme" {
+  name: 'lofi';
+  color-scheme: light;
+  --color-base-100: #ffffff;
+  --color-base-200: #f4f4f5;
+  --color-base-300: #e4e4e7;
+  --color-base-content: #09090b;
+  --color-primary: #ec4899;
+  --color-secondary: #06b6d4;
+  --color-accent: #f59e0b;
+}
+
+@plugin "daisyui/theme" {
+  name: 'black';
+  color-scheme: dark;
+  --color-base-100: #000000;
+  --color-base-200: #0a0a0a;
+  --color-base-300: #171717;
+  --color-base-content: #ffffff;
+  --color-primary: #22c55e;
+  --color-secondary: #a855f7;
+  --color-accent: #f43f5e;
+}
+
+@plugin "daisyui/theme" {
+  name: 'wireframe';
+  color-scheme: light;
+  --color-base-100: #f8fafc;
+  --color-base-200: #f1f5f9;
+  --color-base-300: #e2e8f0;
+  --color-base-content: #020617;
+  --color-primary: #f97316;
+  --color-secondary: #3b82f6;
+  --color-accent: #14b8a6;
 }
 
 * {
@@ -159,6 +220,23 @@ svg {
   100% {
     background-position: 0% 50%;
   }
+}
+
+.text-gradient-animate {
+  background: linear-gradient(-45deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-primary));
+  background-size: 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerText 5s ease infinite;
+  display: inline-block;
+  font-weight: 800;
+}
+
+@keyframes shimmerText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .glass-card {
