@@ -178,7 +178,8 @@ const GitProfile = ({ config }: { config: Config }) => {
   };
 
   return (
-    <div className="fade-in h-screen">
+    <div className="fade-in min-h-screen animated-bg relative overflow-hidden">
+      <div className="hero-glow"></div>
       {error ? (
         <ErrorPage
           status={error.status}
@@ -187,99 +188,105 @@ const GitProfile = ({ config }: { config: Config }) => {
         />
       ) : (
         <>
-          <div className={`p-4 lg:p-10 min-h-full ${BG_COLOR}`}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 rounded-box">
-              <div className="col-span-1">
-                <div className="grid grid-cols-1 gap-6">
-                  {!sanitizedConfig.themeConfig.disableSwitch && (
-                    <ThemeChanger
-                      theme={theme}
-                      setTheme={setTheme}
-                      loading={loading}
-                      themeConfig={sanitizedConfig.themeConfig}
-                    />
-                  )}
-                  <AvatarCard
-                    profile={profile}
+          <div className="p-4 lg:p-10 min-h-full relative z-10 max-w-7xl mx-auto">
+            {/* HERO SECTION */}
+            <div className="flex flex-col items-center justify-center text-center mb-16 pt-8 lg:pt-16">
+              {!sanitizedConfig.themeConfig.disableSwitch && (
+                <div className="absolute top-4 right-4 lg:top-10 lg:right-10">
+                  <ThemeChanger
+                    theme={theme}
+                    setTheme={setTheme}
                     loading={loading}
-                    avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
-                    resumeFileUrl={sanitizedConfig.resume.fileUrl}
+                    themeConfig={sanitizedConfig.themeConfig}
                   />
+                </div>
+              )}
+              <div className="w-full max-w-3xl flex flex-col items-center glass-card p-8 rounded-3xl z-hover">
+                <AvatarCard
+                  profile={profile}
+                  loading={loading}
+                  avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
+                  resumeFileUrl={sanitizedConfig.resume.fileUrl}
+                />
+                <div className="mt-6 w-full">
                   <DetailsCard
                     profile={profile}
                     loading={loading}
                     github={sanitizedConfig.github}
                     social={sanitizedConfig.social}
                   />
-                  {sanitizedConfig.skills.length !== 0 && (
-                    <SkillCard
-                      loading={loading}
-                      skills={sanitizedConfig.skills}
-                    />
-                  )}
-                  {sanitizedConfig.experiences.length !== 0 && (
-                    <ExperienceCard
-                      loading={loading}
-                      experiences={sanitizedConfig.experiences}
-                    />
-                  )}
-                  {sanitizedConfig.certifications.length !== 0 && (
-                    <CertificationCard
-                      loading={loading}
-                      certifications={sanitizedConfig.certifications}
-                    />
-                  )}
-                  {sanitizedConfig.educations.length !== 0 && (
-                    <EducationCard
-                      loading={loading}
-                      educations={sanitizedConfig.educations}
-                    />
-                  )}
                 </div>
               </div>
-              <div className="lg:col-span-2 col-span-1">
-                <div className="grid grid-cols-1 gap-6">
-                  {sanitizedConfig.projects.github.display && (
-                    <GithubProjectCard
-                      header={sanitizedConfig.projects.github.header}
-                      limit={sanitizedConfig.projects.github.automatic.limit}
-                      githubProjects={githubProjects}
-                      loading={loading}
-                      googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                    />
-                  )}
-                  {sanitizedConfig.publications.length !== 0 && (
-                    <PublicationCard
-                      loading={loading}
-                      publications={sanitizedConfig.publications}
-                    />
-                  )}
-                  {sanitizedConfig.projects.external.projects.length !== 0 && (
-                    <ExternalProjectCard
-                      loading={loading}
-                      header={sanitizedConfig.projects.external.header}
-                      externalProjects={
-                        sanitizedConfig.projects.external.projects
-                      }
-                      googleAnalyticId={sanitizedConfig.googleAnalytics.id}
-                    />
-                  )}
-                  {sanitizedConfig.blog.display && (
-                    <BlogCard
-                      loading={loading}
-                      googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                      blog={sanitizedConfig.blog}
-                    />
-                  )}
-                </div>
+            </div>
+
+            {/* CONTENT SECTION */}
+            <div className="flex flex-col lg:flex-row gap-8">
+              {/* Left Column */}
+              <div className="w-full lg:w-1/3 flex flex-col gap-8">
+                {sanitizedConfig.skills.length !== 0 && (
+                  <SkillCard
+                    loading={loading}
+                    skills={sanitizedConfig.skills}
+                  />
+                )}
+                {sanitizedConfig.experiences.length !== 0 && (
+                  <ExperienceCard
+                    loading={loading}
+                    experiences={sanitizedConfig.experiences}
+                  />
+                )}
+                {sanitizedConfig.certifications.length !== 0 && (
+                  <CertificationCard
+                    loading={loading}
+                    certifications={sanitizedConfig.certifications}
+                  />
+                )}
+                {sanitizedConfig.educations.length !== 0 && (
+                  <EducationCard
+                    loading={loading}
+                    educations={sanitizedConfig.educations}
+                  />
+                )}
+              </div>
+
+              {/* Right Column */}
+              <div className="w-full lg:w-2/3 flex flex-col gap-8">
+                {sanitizedConfig.projects.github.display && (
+                  <GithubProjectCard
+                    header={sanitizedConfig.projects.github.header}
+                    limit={sanitizedConfig.projects.github.automatic.limit}
+                    githubProjects={githubProjects}
+                    loading={loading}
+                    googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
+                  />
+                )}
+                {sanitizedConfig.publications.length !== 0 && (
+                  <PublicationCard
+                    loading={loading}
+                    publications={sanitizedConfig.publications}
+                  />
+                )}
+                {sanitizedConfig.projects.external.projects.length !== 0 && (
+                  <ExternalProjectCard
+                    loading={loading}
+                    header={sanitizedConfig.projects.external.header}
+                    externalProjects={sanitizedConfig.projects.external.projects}
+                    googleAnalyticId={sanitizedConfig.googleAnalytics.id}
+                  />
+                )}
+                {sanitizedConfig.blog.display && (
+                  <BlogCard
+                    loading={loading}
+                    googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
+                    blog={sanitizedConfig.blog}
+                  />
+                )}
               </div>
             </div>
           </div>
           {sanitizedConfig.footer && (
-            <footer
-              className={`p-4 footer ${BG_COLOR} text-base-content footer-center`}
-            >
-              <div className="card card-sm bg-base-100 shadow-sm">
+            <footer className="p-4 footer text-base-content footer-center relative z-10 pb-8">
+              <div className="glass-card px-8 py-4 rounded-full shadow-lg">
                 <Footer content={sanitizedConfig.footer} loading={loading} />
               </div>
             </footer>

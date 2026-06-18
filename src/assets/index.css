@@ -78,10 +78,14 @@
 body {
   margin: 0;
   font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .card-title, .font-bold, .font-semibold, .font-heading {
+  font-family: 'Outfit', sans-serif;
 }
 
 code {
@@ -94,16 +98,17 @@ svg {
 }
 
 .z-hover {
-  transition: all ease-in-out 0.3s !important;
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s !important;
 }
 
 .z-hover:hover,
 .z-hover:focus,
 .z-hover:active {
-  transition: transform 0.3s !important;
-  -ms-transform: scale(1.01) !important;
-  -webkit-transform: scale(1.01) !important;
-  transform: scale(1.01) !important;
+  transition: all 0.3s ease-out !important;
+  -ms-transform: translateY(-4px) scale(1.01) !important;
+  -webkit-transform: translateY(-4px) scale(1.01) !important;
+  transform: translateY(-4px) scale(1.01) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
 }
 
 .pb-0-important {
@@ -135,3 +140,49 @@ svg {
     opacity: 1;
   }
 }
+
+/* Modern Redesign Styles */
+
+.animated-bg {
+  background: linear-gradient(-45deg, var(--color-base-100), var(--color-base-200), var(--color-base-300), var(--color-primary));
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="nord"] .glass-card {
+  background: rgba(46, 52, 64, 0.5); /* Nord theme base */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(var(--color-primary), 0.1) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
