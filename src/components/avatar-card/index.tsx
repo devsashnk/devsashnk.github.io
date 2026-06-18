@@ -66,7 +66,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
               skeleton({ widthCls: 'w-48', heightCls: 'h-8' })
             ) : (
               <span className="text-gradient-animate text-3xl">
-                {profile.name}
+                Saeesh Naik
               </span>
             )}
           </h5>
