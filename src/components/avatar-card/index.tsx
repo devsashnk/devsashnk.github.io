@@ -1,4 +1,5 @@
 import { FALLBACK_IMAGE } from '../../constants';
+import { useState, useEffect } from 'react';
 import { Profile } from '../../interfaces/profile';
 import { skeleton } from '../../utils';
 import LazyImage from '../lazy-image';
@@ -23,7 +24,31 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
   loading,
   avatarRing,
   resumeFileUrl,
-}): React.JSX.Element => {
+}) => {
+  const words = ['.NET', 'Full-Stack developer', 'Lead Developer'];
+  const [display, setDisplay] = useState('');
+  const [wordIdx, setWordIdx] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIdx];
+    let timeout;
+    if (isDeleting) {
+      if (display.length > 0) {
+        timeout = setTimeout(() => setDisplay(currentWord.slice(0, display.length - 1)), 100);
+      } else {
+        setIsDeleting(false);
+        setWordIdx((wordIdx + 1) % words.length);
+      }
+    } else {
+      if (display.length < currentWord.length) {
+        timeout = setTimeout(() => setDisplay(currentWord.slice(0, display.length + 1)), 150);
+      } else {
+        timeout = setTimeout(() => setIsDeleting(true), 1500);
+      }
+    }
+    return () => clearTimeout(timeout);
+  }, [display, isDeleting, wordIdx]);
   return (
     <div className="w-full">
       <div className="grid place-items-center pt-0 pb-2">
@@ -70,6 +95,10 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
               </span>
             )}
           </h5>
+          {/* Typed animation */}
+          <p className="typed-text text-base-content mt-1">
+            {display}<span className="cursor">|</span>
+          </p>
           <div className="mt-1 text-base-content font-mono">
             {loading || !profile
               ? skeleton({ widthCls: 'w-48', heightCls: 'h-5' })
