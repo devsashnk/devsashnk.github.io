@@ -2,21 +2,13 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import CONFIG from './gitprofile.config';
-import { createHtmlPlugin } from 'vite-plugin-html';
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  base: CONFIG.base || '/',
-  plugins: [
-    react(),
-    createHtmlPlugin({
-      inject: {
-        data: {
-          metaTitle: CONFIG.seo.title,
-          metaDescription: CONFIG.seo.description,
-          metaImageURL: CONFIG.seo.imageURL,
-          googleAnalyticsScript: CONFIG.googleAnalytics.id
-            ? `<!-- Global site tag (gtag.js) - Google Analytics -->
+// Custom plugin to replace EJS tags (compatible with Vite 7)
+const htmlPlugin = () => {
+  return {
+    name: 'html-transform',
+    transformIndexHtml(html: string) {
+      const gaScript = CONFIG.googleAnalytics.id
+        ? `<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=${CONFIG.googleAnalytics.id}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -24,10 +16,23 @@ export default defineConfig({
   gtag('js', new Date());
   gtag('config', '${CONFIG.googleAnalytics.id}');
 </script>`
-            : '',
-        },
-      },
-    }),
+        : '';
+
+      return html
+        .replace(/<%- metaTitle %>/g, CONFIG.seo.title || '')
+        .replace(/<%- metaDescription %>/g, CONFIG.seo.description || '')
+        .replace(/<%- metaImageURL %>/g, CONFIG.seo.imageURL || '')
+        .replace(/<%- googleAnalyticsScript %>/g, gaScript);
+    },
+  };
+};
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  base: CONFIG.base || '/',
+  plugins: [
+    react(),
+    htmlPlugin(),
     ...(CONFIG.enablePWA
       ? [
           VitePWA({
