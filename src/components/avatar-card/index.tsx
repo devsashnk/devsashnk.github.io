@@ -32,7 +32,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
 
   useEffect(() => {
     const currentWord = words[wordIdx];
-    let timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     if (isDeleting) {
       if (display.length > 0) {
         timeout = setTimeout(() => setDisplay(currentWord.slice(0, display.length - 1)), 100);
