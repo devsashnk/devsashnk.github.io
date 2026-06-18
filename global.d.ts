@@ -178,6 +178,11 @@ interface Social {
   dev?: string;
 
   /**
+   * CodePen
+   */
+  codepen?: string;
+
+  /**
    * Stack Overflow
    */
   stackoverflow?: string;
