@@ -114,7 +114,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             <a
               href={resumeFileUrl}
               target="_blank"
-              className="btn btn-outline btn-sm text-xs mt-2 opacity-50"
+              className="btn btn-primary btn-outline btn-sm text-xs mt-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
               download
               rel="noreferrer"
             >

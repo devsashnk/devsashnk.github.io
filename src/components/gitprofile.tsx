@@ -15,6 +15,8 @@ import ErrorPage from './error-page';
 import { DEFAULT_THEMES } from '../constants/default-themes';
 import ThemeChanger from './theme-changer';
 import AvatarCard from './avatar-card';
+import AboutCard from './about-card';
+import PersonalDetailsCard from './personal-details-card';
 import { Profile } from '../interfaces/profile';
 import DetailsCard from './details-card';
 import SkillCard from './skill-card';
@@ -220,14 +222,6 @@ const GitProfile = ({ config }: { config: Config }) => {
 
             {/* CONTENT SECTION */}
             <div className="columns-1 md:columns-2 gap-8 w-full [&>div]:break-inside-avoid [&>div]:mb-8">
-              {sanitizedConfig.skills.length !== 0 && (
-                <div>
-                  <SkillCard
-                    loading={loading}
-                    skills={sanitizedConfig.skills}
-                  />
-                </div>
-              )}
               {sanitizedConfig.experiences.length !== 0 && (
                 <div>
                   <ExperienceCard
@@ -249,6 +243,20 @@ const GitProfile = ({ config }: { config: Config }) => {
                   <CertificationCard
                     loading={loading}
                     certifications={sanitizedConfig.certifications}
+                  />
+                </div>
+              )}
+              <div>
+                <AboutCard loading={loading} />
+              </div>
+              <div>
+                <PersonalDetailsCard loading={loading} />
+              </div>
+              {sanitizedConfig.skills.length !== 0 && (
+                <div>
+                  <SkillCard
+                    loading={loading}
+                    skills={sanitizedConfig.skills}
                   />
                 </div>
               )}
