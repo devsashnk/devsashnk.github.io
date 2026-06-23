@@ -52,7 +52,7 @@ const CONFIG = {
   },
   resume: {
     fileUrl:
-      'https://drive.google.com/file/d/12rzMTfYPYIMlVa4lvHp0CqpwYa6XnPzE/view?usp=sharing', // Empty fileUrl will hide the `Download Resume` button.
+      'https://drive.google.com/file/d/1-0lFlM8LE3TBQSJe_tO1Y-vP4A9_DVi4/view?usp=sharing', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
     '.NET',
