@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+
 @plugin "daisyui" {
   themes:
     'light', 'dark', 'cupcake', 'bumblebee', 'emerald', 'corporate',
@@ -123,6 +124,7 @@
 }
 
 @media screen and (min-width: 966px) {
+
   ::-webkit-scrollbar,
   .scroller {
     width: 8px;
@@ -145,7 +147,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6, .card-title, .font-bold, .font-semibold, .font-heading {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title,
+.font-bold,
+.font-semibold,
+.font-heading {
   font-family: 'Outfit', sans-serif;
 }
 
@@ -188,6 +199,7 @@ svg {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -197,6 +209,7 @@ svg {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -206,17 +219,22 @@ svg {
 
 .animated-bg {
   background: linear-gradient(-45deg, var(--color-base-100), var(--color-base-200), var(--color-base-300), var(--color-primary));
+  will-change: background;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+  animation: gradientBG 30s ease-in-out infinite;
 }
 
 @keyframes gradientBG {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -234,9 +252,17 @@ svg {
 }
 
 @keyframes shimmerText {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .glass-card {
@@ -248,7 +274,8 @@ svg {
 }
 
 [data-theme="nord"] .glass-card {
-  background: rgba(46, 52, 64, 0.5); /* Nord theme base */
+  background: rgba(46, 52, 64, 0.5);
+  /* Nord theme base */
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -263,4 +290,3 @@ svg {
   z-index: 0;
   pointer-events: none;
 }
-

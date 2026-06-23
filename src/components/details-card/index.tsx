@@ -18,6 +18,7 @@ import {
   FaStackOverflow,
   FaTelegram,
   FaYoutube,
+  FaDownload,
 } from 'react-icons/fa';
 import { FaSquareThreads } from 'react-icons/fa6';
 import { MdLocationOn } from 'react-icons/md';
@@ -35,6 +36,7 @@ type Props = {
   loading: boolean;
   social: SanitizedSocial;
   github: SanitizedGithub;
+  resumeFileUrl?: string;
 };
 
 const isCompanyMention = (company: string): boolean => {
@@ -66,14 +68,14 @@ const ListItem: React.FC<{
   skeleton?: boolean;
 }> = ({ icon, title, value, link, skeleton = false }) => {
   return (
-    <div className="flex justify-start py-0.5 px-1 items-center">
-      <div className="grow font-medium gap-2 flex items-center my-1">
+    <div className="flex justify-start py-0.5 px-1 items-start sm:items-center">
+      <div className="w-1/3 min-w-[130px] font-medium gap-2 flex items-center my-1 text-sm text-base-content/80">
         {icon} {title}
       </div>
       <div
         className={`${
           skeleton ? 'grow' : ''
-        } text-sm font-normal text-right mr-2 ml-3 ${link ? 'truncate' : ''}`}
+        } text-sm font-normal text-left ${link ? 'truncate' : ''} py-1`}
         style={{
           wordBreak: 'break-word',
         }}
@@ -82,7 +84,7 @@ const ListItem: React.FC<{
           href={link}
           target="_blank"
           rel="noreferrer"
-          className="flex justify-start py-2 px-1 items-center"
+          className="flex justify-start items-center"
         >
           {value}
         </a>
@@ -124,14 +126,14 @@ const OrganizationItem: React.FC<{
   };
 
   return (
-    <div className="flex justify-start py-0.5 px-1 items-center">
-      <div className="grow font-medium gap-2 flex items-center my-1">
+    <div className="flex justify-start py-0.5 px-1 items-start sm:items-center">
+      <div className="w-1/3 min-w-[130px] font-medium gap-2 flex items-center my-1 text-sm text-base-content/80">
         {icon} {title}
       </div>
       <div
         className={`${
           skeleton ? 'grow' : ''
-        } text-sm font-normal text-right mr-2 ml-3 space-x-2 ${link ? 'truncate' : ''}`}
+        } text-sm font-normal text-left space-x-2 ${link ? 'truncate' : ''} py-1`}
         style={{
           wordBreak: 'break-word',
         }}
@@ -151,7 +153,7 @@ const OrganizationItem: React.FC<{
  * @param {Object} github - The GitHub object.
  * @return {JSX.Element} The details card component.
  */
-const DetailsCard = ({ profile, loading, social, github }: Props) => {
+const DetailsCard = ({ profile, loading, social, github, resumeFileUrl }: Props) => {
   const renderSkeleton = () => {
     const array = [];
     for (let index = 0; index < 4; index++) {
@@ -376,6 +378,23 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
                   link={`https://discord.com/app`}
                 />
               )}
+              {resumeFileUrl && (
+      <ListItem
+        icon={<FaDownload />}
+        title="Resume:"
+        value={
+          <a
+            href="https://drive.google.com/file/d/1-0lFlM8LE3TBQSJe_tO1Y-vP4A9_DVi4/view?usp=drive_link"
+            target="_blank"
+            rel="noreferrer"
+            download
+            className="text-primary hover:underline"
+          >
+            Download
+          </a>
+        }
+      />
+)}
             </div>
           )}
         </div>

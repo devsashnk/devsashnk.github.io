@@ -191,30 +191,33 @@ const GitProfile = ({ config }: { config: Config }) => {
         <>
           <div className="p-4 lg:p-10 min-h-full relative z-10 max-w-7xl mx-auto">
             {/* HERO SECTION */}
-            <div className="flex flex-col items-center justify-center text-center mb-8 pt-4 lg:pt-8">
-              {!sanitizedConfig.themeConfig.disableSwitch && (
-                <div className="absolute top-4 right-4 lg:top-10 lg:right-10">
-                  <ThemeChanger
-                    theme={theme}
-                    setTheme={setTheme}
+            <div className="flex justify-center mb-8 pt-4 lg:pt-8">
+              <div className="w-full max-w-5xl flex flex-col md:flex-row items-center md:items-stretch glass-card p-6 lg:p-8 rounded-3xl z-hover relative gap-6">
+                {!sanitizedConfig.themeConfig.disableSwitch && (
+                  <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">
+                    <ThemeChanger
+                      theme={theme}
+                      setTheme={setTheme}
+                      loading={loading}
+                      themeConfig={sanitizedConfig.themeConfig}
+                    />
+                  </div>
+                )}
+                <div className="w-full md:w-5/12 flex items-center justify-center pt-8 md:pt-0">
+                  <AvatarCard
+                    profile={profile}
                     loading={loading}
-                    themeConfig={sanitizedConfig.themeConfig}
+                    avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
                   />
                 </div>
-              )}
-              <div className="w-full max-w-lg flex flex-col items-center glass-card p-4 rounded-3xl z-hover">
-                <AvatarCard
-                  profile={profile}
-                  loading={loading}
-                  avatarRing={sanitizedConfig.themeConfig.displayAvatarRing}
-                  resumeFileUrl={sanitizedConfig.resume.fileUrl}
-                />
-                <div className="mt-4 w-full">
+                <div className="hidden md:block w-px bg-base-300/50 my-4" />
+                <div className="w-full md:w-7/12 flex flex-col justify-center pt-4 md:pt-10 pb-4">
                   <DetailsCard
                     profile={profile}
                     loading={loading}
                     github={sanitizedConfig.github}
                     social={sanitizedConfig.social}
+                    resumeFileUrl={sanitizedConfig.resume.fileUrl}
                   />
                 </div>
               </div>

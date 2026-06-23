@@ -8,7 +8,6 @@ interface AvatarCardProps {
   profile: Profile | null;
   loading: boolean;
   avatarRing: boolean;
-  resumeFileUrl?: string;
 }
 
 /**
@@ -23,7 +22,6 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
   profile,
   loading,
   avatarRing,
-  resumeFileUrl,
 }) => {
   const words = ['.NET', 'Full-Stack developer', 'Lead Developer'];
   const [display, setDisplay] = useState('');
@@ -51,10 +49,10 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
   }, [display, isDeleting, wordIdx]);
   return (
     <div className="w-full">
-      <div className="grid place-items-center pt-0 pb-2">
+      <div className="flex flex-col items-center pt-2 pb-2">
         {loading || !profile ? (
-          <div className="avatar opacity-90">
-            <div className="mb-8 rounded-full w-32 h-32">
+          <div className="avatar opacity-90 mb-4">
+            <div className="rounded-full w-32 h-32">
               {skeleton({
                 widthCls: 'w-full',
                 heightCls: 'h-full',
@@ -63,14 +61,8 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             </div>
           </div>
         ) : (
-          <div className="avatar opacity-90">
-            <div
-              className={`mb-4 rounded-full w-24 h-24 ${
-                avatarRing
-                  ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2'
-                  : ''
-              }`}
-            >
+          <div className="avatar opacity-90 mb-5 relative group">
+            <div className={`rounded-full w-32 h-32 shadow-xl transition-transform duration-300 group-hover:scale-105 ${avatarRing ? 'ring-4 ring-primary ring-offset-base-100 ring-offset-4' : ''}`}>
               {
                 <LazyImage
                   src={profile.avatar ? profile.avatar : FALLBACK_IMAGE}
@@ -85,8 +77,8 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             </div>
           </div>
         )}
-        <div className="text-center mx-auto px-8">
-          <h5 className="font-bold text-2xl">
+        <div className="text-center mx-auto px-4 flex flex-col items-center">
+          <h5 className="font-bold text-3xl">
             {loading || !profile ? (
               skeleton({ widthCls: 'w-48', heightCls: 'h-8' })
             ) : (
@@ -96,31 +88,15 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             )}
           </h5>
           {/* Typed animation */}
-          <p className="typed-text text-base-content mt-1">
-            {display}<span className="cursor">|</span>
+          <p className="text-base-content text-sm font-medium opacity-80 mt-1.5 mb-2">
+            {display}<span className="cursor opacity-50">|</span>
           </p>
-          <div className="mt-1 text-base-content font-mono">
+          <div className="text-base-content text-sm opacity-70 max-w-[280px]">
             {loading || !profile
               ? skeleton({ widthCls: 'w-48', heightCls: 'h-5' })
               : profile.bio}
           </div>
         </div>
-        {resumeFileUrl &&
-          (loading ? (
-            <div className="mt-2">
-              {skeleton({ widthCls: 'w-40', heightCls: 'h-8' })}
-            </div>
-          ) : (
-            <a
-              href={resumeFileUrl}
-              target="_blank"
-              className="btn btn-primary btn-outline btn-sm text-xs mt-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20"
-              download
-              rel="noreferrer"
-            >
-              Download Resume
-            </a>
-          ))}
       </div>
     </div>
   );
