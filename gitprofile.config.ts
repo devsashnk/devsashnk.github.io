@@ -30,6 +30,20 @@ const CONFIG = {
     },
   },
   seo: { title: 'Portfolio of Saeesh Naik', description: '', imageURL: '' },
+  // Personal details displayed on the profile card
+  personalDetails: {
+    name: 'Saeesh Naik',
+    titles: ['.NET', 'Full-Stack developer', 'Lead Developer'],
+    about: `I'm a .NET developer with over 7 years of experience building web applications and APIs. I enjoy creating solutions that are reliable, secure, and easy to maintain, with a strong focus on application scalability and performance.
+Technology is something I genuinely enjoy, not just as a profession but as a hobby. I like exploring new tools, frameworks, and industry trends to keep learning and improving my skills.
+Outside of work, I love playing table tennis, carrom, and cricket, listening to music, and reading about the latest developments in technology.`,
+    location: 'Merces, Goa, India',
+    birthdate: '14th October 1990',
+    gender: 'Male',
+    nationality: 'Indian',
+    languages: 'English, Konkani, Hindi and Marathi',
+    interests: 'Playing sports',
+  },
   social: {
     linkedin: '',
     facebook: '',

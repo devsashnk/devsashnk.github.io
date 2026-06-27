@@ -28,12 +28,12 @@ const PersonalDetailsCard = ({ loading }: { loading: boolean }) => {
             renderSkeleton()
           ) : (
             <ul className="list-none space-y-2">
-              <li>📍 Based in Merces, Goa, India</li>
-              <li>🎂 Born on 14th October 1990</li>
-              <li>👨 Gender: Male</li>
-              <li>🌍 Nationality: Indian</li>
-              <li>🗣️ Languages known: English, Konkani, Hindi and Marathi</li>
-              <li>💡 Interests: Playing sports</li>
+                <li>📍 Based in {CONFIG.personalDetails.location}</li>
+                <li>🎂 Born on {CONFIG.personalDetails.birthdate}</li>
+                <li>👨 Gender: {CONFIG.personalDetails.gender}</li>
+                <li>🌍 Nationality: {CONFIG.personalDetails.nationality}</li>
+                <li>🗣️ Languages known: {CONFIG.personalDetails.languages}</li>
+                <li>💡 Interests: {CONFIG.personalDetails.interests}</li>
             </ul>
           )}
         </div>

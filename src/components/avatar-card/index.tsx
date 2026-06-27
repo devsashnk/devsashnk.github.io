@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Profile } from '../../interfaces/profile';
 import { skeleton } from '../../utils';
 import LazyImage from '../lazy-image';
-
 interface AvatarCardProps {
   profile: Profile | null;
   loading: boolean;
@@ -23,7 +22,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
   loading,
   avatarRing,
 }) => {
-  const words = ['.NET', 'Full-Stack developer', 'Lead Developer'];
+  const words = CONFIG.personalDetails.titles;
   const [display, setDisplay] = useState('');
   const [wordIdx, setWordIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -83,7 +82,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
               skeleton({ widthCls: 'w-48', heightCls: 'h-8' })
             ) : (
               <span className="text-gradient-animate text-3xl">
-                Saeesh Naik
+                {CONFIG.personalDetails.name}
               </span>
             )}
           </h5>

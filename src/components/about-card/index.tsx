@@ -28,15 +28,9 @@ const AboutCard = ({ loading }: { loading: boolean }) => {
             renderSkeleton()
           ) : (
             <>
-              <p>
-                I'm a .NET developer with over 7 years of experience building web applications and APIs. I enjoy creating solutions that are reliable, secure, and easy to maintain, with a strong focus on application security and performance.
-              </p>
-              <p>
-                Technology is something I genuinely enjoy, not just as a profession but as a hobby. I like exploring new tools, frameworks, and industry trends to keep learning and improving my skills.
-              </p>
-              <p>
-                Outside of work, I love playing table tennis, carrom, and cricket, listening to music, and reading about the latest developments in technology.
-              </p>
+              {CONFIG.personalDetails.about.split('\n').map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
             </>
           )}
         </div>

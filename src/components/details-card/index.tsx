@@ -384,7 +384,7 @@ const DetailsCard = ({ profile, loading, social, github, resumeFileUrl }: Props)
         title="Resume:"
         value={
           <a
-            href="https://drive.google.com/file/d/1-0lFlM8LE3TBQSJe_tO1Y-vP4A9_DVi4/view?usp=drive_link"
+            href={resumeFileUrl}
             target="_blank"
             rel="noreferrer"
             download

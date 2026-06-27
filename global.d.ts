@@ -401,6 +401,21 @@ interface Config {
    * Enable PWA
    */
   enablePWA?: boolean;
+
+  /**
+   * Personal details displayed on the profile card
+   */
+  personalDetails: {
+    name: string;
+    titles: string[];
+    about: string;
+    location: string;
+    birthdate: string;
+    gender: string;
+    nationality: string;
+    languages: string;
+    interests: string;
+  };
 }
 
 declare const CONFIG: Config;
