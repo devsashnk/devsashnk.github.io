@@ -66,7 +66,7 @@ Outside of work, I love playing table tennis, carrom, and cricket, listening to 
   },
   resume: {
     fileUrl:
-      'https://drive.google.com/file/d/1-0lFlM8LE3TBQSJe_tO1Y-vP4A9_DVi4/view?usp=sharing', // Empty fileUrl will hide the `Download Resume` button.
+      'https://drive.google.com/file/d/1Kt3PShs-WIOYlFVcR91x23nWmz6VhFEw/view?usp=sharing', // Empty fileUrl will hide the `Download Resume` button.
   },
   skills: [
     '.NET',
